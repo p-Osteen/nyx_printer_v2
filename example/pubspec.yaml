@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  nyx_printer:
+  nyx_printer_v2:
     path: ../
 
 dev_dependencies:

@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:example/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:nyx_printer/nyx_printer.dart';
+import 'package:nyx_printer_v2/nyx_printer.dart';
 
 void main() {
   runApp(const MyApp());
