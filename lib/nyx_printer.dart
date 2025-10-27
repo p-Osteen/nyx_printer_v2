@@ -58,4 +58,121 @@ class NyxPrinter {
   Future<int?> paperOut() {
     return NyxPrinterPlatform.instance.paperOut();
   }
+
+  /// Gets the printer service version.
+  ///
+  /// Returns a [String] representing the service version, or null if it fails.
+  /// This is useful for debugging and ensuring compatibility.
+  Future<String?> getServiceVersion() {
+    return NyxPrinterPlatform.instance.getServiceVersion();
+  }
+
+  /// Gets the printer model information.
+  ///
+  /// Returns a [String] representing the printer model, or null if it fails.
+  /// This helps identify which printer is currently connected.
+  Future<String?> getPrinterModel() {
+    return NyxPrinterPlatform.instance.getPrinterModel();
+  }
+
+  /// Gets the current printer status.
+  ///
+  /// Returns an [int] representing the printer status:
+  /// - 0: Ready/Normal
+  /// - Other values indicate specific error conditions
+  /// - null: Operation failed or service unavailable
+  Future<int?> getPrinterStatus() {
+    return NyxPrinterPlatform.instance.getPrinterStatus();
+  }
+
+  /// Feeds paper by the specified number of pixels.
+  ///
+  /// [pixels] The number of pixels to feed the paper. Must be non-negative.
+  /// Returns 0 on success, or an error code on failure.
+  ///
+  /// This is useful for creating spacing between print jobs or
+  /// positioning the paper for optimal cutting.
+  Future<int?> paperFeed(int pixels) {
+    if (pixels < 0) {
+      throw ArgumentError('Paper feed pixels must be non-negative');
+    }
+    return NyxPrinterPlatform.instance.paperFeed(pixels);
+  }
+
+  /// Checks if the printer is ready for printing.
+  ///
+  /// Returns `true` if the printer is ready, `false` otherwise.
+  /// This combines multiple status checks for convenience.
+  Future<bool> isReady() async {
+    try {
+      final status = await getPrinterStatus();
+      final paperStatus = await paperOut();
+      
+      // Status 0 means ready, paper status 0 means paper present
+      return status == 0 && paperStatus == 0;
+    } catch (e) {
+      // If any check fails, consider the printer not ready
+      return false;
+    }
+  }
+
+  /// Checks if the printer service is currently connected and available.
+  ///
+  /// Returns `true` if the service is connected and ready to use, `false` otherwise.
+  /// This should be called before attempting any print operations to ensure availability.
+  Future<bool> isServiceConnected() {
+    return NyxPrinterPlatform.instance.isServiceConnected();
+  }
+
+  /// Validates printer connection and basic functionality.
+  ///
+  /// Returns a [Map] with diagnostic information about the printer.
+  /// Useful for troubleshooting connection issues.
+  Future<Map<String, dynamic>> getDiagnostics() async {
+    final diagnostics = <String, dynamic>{};
+    
+    try {
+      diagnostics['serviceConnected'] = await isServiceConnected();
+    } catch (e) {
+      diagnostics['serviceConnected'] = false;
+    }
+    
+    try {
+      diagnostics['version'] = await getVersion();
+    } catch (e) {
+      diagnostics['version'] = 'Error: $e';
+    }
+    
+    try {
+      diagnostics['serviceVersion'] = await getServiceVersion();
+    } catch (e) {
+      diagnostics['serviceVersion'] = 'Error: $e';
+    }
+    
+    try {
+      diagnostics['model'] = await getPrinterModel();
+    } catch (e) {
+      diagnostics['model'] = 'Error: $e';
+    }
+    
+    try {
+      diagnostics['status'] = await getPrinterStatus();
+    } catch (e) {
+      diagnostics['status'] = 'Error: $e';
+    }
+    
+    try {
+      diagnostics['paperOut'] = await paperOut();
+    } catch (e) {
+      diagnostics['paperOut'] = 'Error: $e';
+    }
+    
+    try {
+      diagnostics['isReady'] = await isReady();
+    } catch (e) {
+      diagnostics['isReady'] = false;
+    }
+    
+    return diagnostics;
+  }
 }

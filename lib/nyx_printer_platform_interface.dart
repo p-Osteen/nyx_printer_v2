@@ -92,4 +92,40 @@ abstract class NyxPrinterPlatform extends PlatformInterface {
   Future<int?> paperOut() {
     return instance.paperOut();
   }
+
+  /// Gets the printer service version.
+  ///
+  /// Returns a [String] representing the service version, or null if it fails.
+  Future<String?> getServiceVersion() {
+    return instance.getServiceVersion();
+  }
+
+  /// Gets the printer model information.
+  ///
+  /// Returns a [String] representing the printer model, or null if it fails.
+  Future<String?> getPrinterModel() {
+    return instance.getPrinterModel();
+  }
+
+  /// Gets the printer status.
+  ///
+  /// Returns an [int] representing the printer status, or null if it fails.
+  Future<int?> getPrinterStatus() {
+    return instance.getPrinterStatus();
+  }
+
+  /// Feeds paper by the specified number of pixels.
+  ///
+  /// [pixels] The number of pixels to feed the paper.
+  /// Returns an [int] representing the result of the operation, or null if it fails.
+  Future<int?> paperFeed(int pixels) {
+    return instance.paperFeed(pixels);
+  }
+
+  /// Checks if the printer service is currently connected.
+  ///
+  /// Returns `true` if the service is connected and ready to use, `false` otherwise.
+  Future<bool> isServiceConnected() {
+    return instance.isServiceConnected();
+  }
 }
