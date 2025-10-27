@@ -1,4 +1,7 @@
 ## 1.1.1
+- Roll back old changes due to incompatibility issues.
+
+## 1.1.1
 
 - Added comprehensive error handling with timeouts for all operations
 - Added new printer status methods: `getServiceVersion()`, `getPrinterModel()`, `getPrinterStatus()`

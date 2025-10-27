@@ -2,7 +2,7 @@ name: nyx_printer_v2
 description: "A Flutter plugin for integrating and controlling the Nyx printer
   (NB55 and T2 Pro models), enabling features like paper handling, printing
   status, and more."
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/notOsteen/nyx_printer_v2
 
 environment:
