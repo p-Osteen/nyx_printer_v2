@@ -61,19 +61,17 @@ class NyxTextFormat {
 
   /// Constructor to initialize the [NyxTextFormat] with default values or custom ones.
   ///
-  /// [textSize] The size of the text. Must be positive. Default is 24.
+  /// [textSize] The size of the text. Default is 24.
   /// [underline] Whether the text should be underlined. Default is false.
-  /// [textScaleX] The horizontal scaling factor for the text. Must be positive. Default is 1.0.
-  /// [textScaleY] The vertical scaling factor for the text. Must be positive. Default is 1.0.
+  /// [textScaleX] The horizontal scaling factor for the text. Default is 1.0.
+  /// [textScaleY] The vertical scaling factor for the text. Default is 1.0.
   /// [letterSpacing] The space between letters. Default is 0.
   /// [lineSpacing] The space between lines of text. Default is 0.
-  /// [topPadding] The top padding for the text. Must be non-negative. Default is 0.
-  /// [leftPadding] The left padding for the text. Must be non-negative. Default is 0.
+  /// [topPadding] The top padding for the text. Default is 0.
+  /// [leftPadding] The left padding for the text. Default is 0.
   /// [align] The alignment of the text. Default is [NyxAlign.left].
   /// [style] The font style. Default is [NyxFontStyle.normal].
   /// [font] The font type. Default is [NyxFont.defaultFont].
-  ///
-  /// Throws [ArgumentError] if any parameter is invalid.
   NyxTextFormat({
     this.textSize = 24,
     this.underline = false,
@@ -86,54 +84,13 @@ class NyxTextFormat {
     this.align = NyxAlign.left,
     this.style = NyxFontStyle.normal,
     this.font = NyxFont.defaultFont,
-  }) {
-    if (textSize <= 0) {
-      throw ArgumentError('Text size must be positive');
-    }
-    if (textScaleX <= 0) {
-      throw ArgumentError('Text scale X must be positive');
-    }
-    if (textScaleY <= 0) {
-      throw ArgumentError('Text scale Y must be positive');
-    }
-    if (topPadding < 0) {
-      throw ArgumentError('Top padding must be non-negative');
-    }
-    if (leftPadding < 0) {
-      throw ArgumentError('Left padding must be non-negative');
-    }
-  }
-
-  /// Validates the current text format settings.
-  ///
-  /// Throws [ArgumentError] if any property has an invalid value.
-  void validate() {
-    if (textSize <= 0) {
-      throw ArgumentError('Text size must be positive');
-    }
-    if (textScaleX <= 0) {
-      throw ArgumentError('Text scale X must be positive');
-    }
-    if (textScaleY <= 0) {
-      throw ArgumentError('Text scale Y must be positive');
-    }
-    if (topPadding < 0) {
-      throw ArgumentError('Top padding must be non-negative');
-    }
-    if (leftPadding < 0) {
-      throw ArgumentError('Left padding must be non-negative');
-    }
-  }
+  });
 
   /// Converts the [NyxTextFormat] properties into a map of key-value pairs.
   ///
   /// This method is useful for passing the text format options to platform-specific implementations.
   /// The map keys correspond to the text formatting properties, and the values are their respective settings.
-  ///
-  /// Validates the format before conversion.
   Map<String, dynamic> toMap() {
-    validate(); // Ensure all values are valid before conversion
-    
     return <String, dynamic>{
       'textSize': textSize,
       'underline': underline,
@@ -165,55 +122,6 @@ class NyxTextFormat {
                       ? 3
                       : 4,
     };
-  }
-
-  /// Creates a copy of this [NyxTextFormat] with optionally modified properties.
-  ///
-  /// This is useful for creating variations of a text format without
-  /// modifying the original instance.
-  NyxTextFormat copyWith({
-    int? textSize,
-    bool? underline,
-    double? textScaleX,
-    double? textScaleY,
-    double? letterSpacing,
-    double? lineSpacing,
-    int? topPadding,
-    int? leftPadding,
-    NyxAlign? align,
-    NyxFontStyle? style,
-    NyxFont? font,
-  }) {
-    return NyxTextFormat(
-      textSize: textSize ?? this.textSize,
-      underline: underline ?? this.underline,
-      textScaleX: textScaleX ?? this.textScaleX,
-      textScaleY: textScaleY ?? this.textScaleY,
-      letterSpacing: letterSpacing ?? this.letterSpacing,
-      lineSpacing: lineSpacing ?? this.lineSpacing,
-      topPadding: topPadding ?? this.topPadding,
-      leftPadding: leftPadding ?? this.leftPadding,
-      align: align ?? this.align,
-      style: style ?? this.style,
-      font: font ?? this.font,
-    );
-  }
-
-  @override
-  String toString() {
-    return 'NyxTextFormat{'
-        'textSize: $textSize, '
-        'underline: $underline, '
-        'textScaleX: $textScaleX, '
-        'textScaleY: $textScaleY, '
-        'letterSpacing: $letterSpacing, '
-        'lineSpacing: $lineSpacing, '
-        'topPadding: $topPadding, '
-        'leftPadding: $leftPadding, '
-        'align: $align, '
-        'style: $style, '
-        'font: $font'
-        '}';
   }
 }
 
