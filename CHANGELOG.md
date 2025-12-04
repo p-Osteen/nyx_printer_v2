@@ -1,3 +1,6 @@
+## 1.1.3
+- Bump package metadata and tidy formatting.
+
 ## 1.1.2
 - Roll back old changes due to incompatibility issues.
 
