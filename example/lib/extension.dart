@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 /// Extension to add an onTap handler to any [Widget].
