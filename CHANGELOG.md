@@ -1,3 +1,7 @@
+## 1.1.6
+- Update example app with a modern, minimal, dark-themed UI optimized for low-end POS hardware.
+- Add sample POS receipt layout and print action.
+
 ## 1.1.5
 - Add missing public member API and library-level documentation.
 
