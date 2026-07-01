@@ -1,3 +1,9 @@
+## 1.1.5
+- Add missing public member API and library-level documentation.
+
+## 1.1.4
+- Adapt Android 11+ package visibility compatibility (added `net.nyx.printerservice` queries tag in example app).
+
 ## 1.1.3
 - Bump package metadata and tidy formatting.
 

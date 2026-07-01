@@ -25,6 +25,18 @@ Then, run the following command in your terminal to install the package:
 flutter pub get
 ```
 
+## Android Setup
+
+### Package Visibility (Android 11 / API 30+)
+
+Android 11 (API level 30) introduces package visibility restrictions. If your app targets Android 11 or higher, you must declare the printer package visibility in your app's `android/app/src/main/AndroidManifest.xml` inside the `<manifest>` tag:
+
+```xml
+<queries>
+    <package android:name="net.nyx.printerservice"/>
+</queries>
+```
+
 ## Importing the Package
 
 In your Dart file, import the necessary classes:

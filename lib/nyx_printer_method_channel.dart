@@ -1,3 +1,6 @@
+/// The method channel implementation of the Nyx printer plugin.
+library nyx_printer_method_channel;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'nyx_printer_platform_interface.dart';
@@ -6,6 +9,9 @@ import 'nyx_text_format.dart';
 /// A platform-specific implementation of [NyxPrinterPlatform] using method channels.
 /// This class communicates with the native platform to perform printing tasks.
 class MethodChannelNyxPrinter extends NyxPrinterPlatform {
+  /// Creates a new instance of [MethodChannelNyxPrinter].
+  MethodChannelNyxPrinter();
+
   @visibleForTesting
 
   /// The method channel used to communicate with the native platform for printer-related operations.

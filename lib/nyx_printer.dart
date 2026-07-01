@@ -1,3 +1,7 @@
+/// The main library for the nyx_printer package, providing the [NyxPrinter] class
+/// to perform printing operations on Nyx printer devices.
+library nyx_printer;
+
 import 'package:flutter/services.dart';
 import 'nyx_printer_platform_interface.dart';
 import 'nyx_text_format.dart';
@@ -11,6 +15,8 @@ export 'nyx_text_format.dart';
 /// (iOS or Android). The class abstracts the platform-specific details, allowing you to call common methods
 /// such as printing text, barcodes, QR codes, and bitmaps, without worrying about platform implementation details.
 class NyxPrinter {
+  /// Creates a new instance of [NyxPrinter].
+  NyxPrinter();
   /// [getVersion] will return printer version number.
   /// success result is 0.
   Future<int?> getVersion() {

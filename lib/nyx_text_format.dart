@@ -1,3 +1,6 @@
+/// The text formatting configurations and styles for the Nyx printer.
+library nyx_text_format;
+
 /// The [NyxTextFormat] class holds the formatting options for text to be printed.
 /// This class allows customization of text appearance, including font size, style, alignment, spacing, and padding.
 /// It provides a method [toMap] to convert the properties into a map format suitable for platform-specific communication.

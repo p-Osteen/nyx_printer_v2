@@ -1,3 +1,6 @@
+/// The platform interface for the Nyx printer plugin.
+library nyx_printer_platform_interface;
+
 import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
