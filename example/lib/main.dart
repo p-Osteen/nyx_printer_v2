@@ -84,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
           _paperStatus = "Error / Unknown";
         }
       });
-      _addLog("Status checked (Version: $_printerVersion, Paper: $_paperStatus)");
+      _addLog(
+          "Status checked (Version: $_printerVersion, Paper: $_paperStatus)");
     } catch (e) {
       setState(() {
         _paperStatus = "Error";
@@ -99,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // Executes a printer transaction asynchronously and reports the outcome code
-  Future<void> _runPrintJob(String jobName, Future<dynamic> Function() printAction) async {
+  Future<void> _runPrintJob(
+      String jobName, Future<dynamic> Function() printAction) async {
     _addLog("Starting print: $jobName...");
     try {
       final result = await printAction();
@@ -129,7 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Color _getPaperStatusColor() {
     if (_paperStatus.contains("Paper OK")) {
       return const Color(0xFF00C853);
-    } else if (_paperStatus.contains("Out of Paper") || _paperStatus == "Error") {
+    } else if (_paperStatus.contains("Out of Paper") ||
+        _paperStatus == "Error") {
       return const Color(0xFFFF1744);
     }
     return const Color(0xFFFFAB00);
@@ -157,7 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 20,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF00BFA5)),
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF00BFA5)),
                   ),
                 ),
               ),
@@ -184,7 +188,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -211,7 +216,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 6, horizontal: 12),
                         decoration: BoxDecoration(
                           color: _getPaperStatusColor().withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(16),
@@ -270,15 +276,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     _buildOperationTile(
                       icon: Icons.text_snippet_outlined,
                       title: "Print Standard Text",
-                      subtitle: "Prints a standard text string to test basic feed",
-                      onTap: () => _runPrintJob("Standard Text", () => _nyxPrinter.printText("Standard Sample Text\n")),
+                      subtitle:
+                          "Prints a standard text string to test basic feed",
+                      onTap: () => _runPrintJob(
+                          "Standard Text",
+                          () =>
+                              _nyxPrinter.printText("Standard Sample Text\n")),
                     ),
                     const SizedBox(height: 8),
                     _buildOperationTile(
                       icon: Icons.receipt_long_outlined,
                       title: "Print POS Receipt",
-                      subtitle: "Prints a formatted sample POS transaction receipt",
-                      onTap: () => _runPrintJob("POS Receipt", () => printSampleReceipt(_nyxPrinter)),
+                      subtitle:
+                          "Prints a formatted sample POS transaction receipt",
+                      onTap: () => _runPrintJob(
+                          "POS Receipt", () => printSampleReceipt(_nyxPrinter)),
                     ),
                     const SizedBox(height: 8),
                     _buildOperationTile(
@@ -303,14 +315,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icons.qr_code_2_outlined,
                       title: "Print QR Code",
                       subtitle: "Prints a standard 300x300 QR code",
-                      onTap: () => _runPrintJob("QR Code", () => _nyxPrinter.printQrCode('https://pub.dev/packages/nyx_printer_v2')),
+                      onTap: () => _runPrintJob(
+                          "QR Code",
+                          () => _nyxPrinter.printQrCode(
+                              'https://pub.dev/packages/nyx_printer_v2')),
                     ),
                     const SizedBox(height: 8),
                     _buildOperationTile(
                       icon: Icons.barcode_reader,
                       title: "Print Barcode",
                       subtitle: "Prints a standard barcode image",
-                      onTap: () => _runPrintJob("Barcode", () => _nyxPrinter.printBarcode('1122334455')),
+                      onTap: () => _runPrintJob(
+                          "Barcode",
+                          () => _nyxPrinter.printBarcode('1122334455',
+                              width: 300, height: 160)),
                     ),
                   ],
                 ),
@@ -345,7 +363,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             ? const Center(
                                 child: Text(
                                   "No logs recorded yet.",
-                                  style: TextStyle(color: Colors.grey, fontSize: 11),
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 11),
                                 ),
                               )
                             : ListView.builder(
@@ -353,7 +372,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 itemCount: _logs.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 2.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 2.0),
                                     child: Text(
                                       _logs[index],
                                       style: const TextStyle(

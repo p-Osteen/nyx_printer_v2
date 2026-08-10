@@ -1,7 +1,7 @@
 
 # NyxPrinter Flutter Plugin
 
-The **NyxPrinter** package is a Flutter plugin that allows you to interact with printers, enabling functionalities such as printing text, barcodes, QR codes, and images. It leverages platform-specific code to communicate with the printer and perform various tasks.
+The **NyxPrinter** package is a Flutter plugin that allows you to interact with Nyx printers (NB55, T2 Pro, and T2 Plus models), enabling functionalities such as printing text, barcodes, QR codes, and images. It leverages platform-specific code to communicate with the printer and perform various tasks.
 
 ## Features
 
@@ -16,7 +16,7 @@ To use **NyxPrinter** in your Flutter project, add the following dependency to y
 
 ```yaml
 dependencies:
-  nyx_printer: ^latest_version
+  nyx_printer_v2: ^1.2.0
 ```
 
 Then, run the following command in your terminal to install the package:
@@ -46,7 +46,7 @@ If your app targets Android 11 or higher and you still need to declare it manual
 In your Dart file, import the necessary classes:
 
 ```dart
-import 'package:nyx_printer/nyx_printer.dart';
+import 'package:nyx_printer_v2/nyx_printer.dart';
 ```
 
 ## Usage

@@ -1,3 +1,7 @@
+## 1.2.1
+- Update documentation and `pubspec.yaml` to reflect `nyx_printer_v2` name and T2 Plus support.
+- Update example app to properly pass `width` and `height` to `printBarcode`.
+
 ## 1.2.0
 - Upgrade printer service AIDL interface to the latest version supporting newer T2 Plus devices.
 - Update Kotlin implementation of `printBarcode` to support updated signatures.

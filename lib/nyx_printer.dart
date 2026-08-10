@@ -17,6 +17,7 @@ export 'nyx_text_format.dart';
 class NyxPrinter {
   /// Creates a new instance of [NyxPrinter].
   NyxPrinter();
+
   /// [getVersion] will return printer version number.
   /// success result is 0.
   Future<int?> getVersion() {

@@ -124,7 +124,7 @@ Future<void> printSampleReceipt(NyxPrinter printer) async {
 
   await printer.printText(
     formatRow("Subtotal:", "\$${subtotal.toStringAsFixed(2)}") +
-    formatRow("Tax (8%):", "\$${tax.toStringAsFixed(2)}"),
+        formatRow("Tax (8%):", "\$${tax.toStringAsFixed(2)}"),
     textFormat: NyxTextFormat(
       align: NyxAlign.left,
       textSize: 20,
