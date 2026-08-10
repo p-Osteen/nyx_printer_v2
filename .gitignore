@@ -32,3 +32,5 @@ build/
 .fvm/
 *.fvmrc
 diff.txt
+*.lock
+/sdk/

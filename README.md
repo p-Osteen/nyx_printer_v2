@@ -27,13 +27,17 @@ flutter pub get
 
 ## Android Setup
 
-### Package Visibility (Android 11 / API 30+)
+### Package Visibility (Android 11 / API 30+ & Android 14+)
 
-Android 11 (API level 30) introduces package visibility restrictions. If your app targets Android 11 or higher, you must declare the printer package visibility in your app's `android/app/src/main/AndroidManifest.xml` inside the `<manifest>` tag:
+Android 11 (API level 30) introduces package visibility restrictions. The plugin's manifest automatically declares package visibility queries for both older devices (`net.nyx.printerservice`) and newer Android 13/14+ devices (`com.incar.printerservice`). 
+
+If your app targets Android 11 or higher and you still need to declare it manually, you can add the printer package visibility in your app's `android/app/src/main/AndroidManifest.xml` inside the `<manifest>` tag:
+
 
 ```xml
 <queries>
     <package android:name="net.nyx.printerservice"/>
+    <package android:name="com.incar.printerservice"/>
 </queries>
 ```
 

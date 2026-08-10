@@ -51,15 +51,17 @@ class NyxPrinterPlugin: FlutterPlugin, MethodCallHandler {
 
   private fun startService(context: Context) {
     val intent = Intent().apply {
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+      setPackage("net.nyx.printerservice")
+      action = "net.nyx.printerservice.IPrinterService"
+    }
+    var bound = context.bindService(intent, connService, Context.BIND_AUTO_CREATE)
+    if (!bound) {
+      val intent2 = Intent().apply {
         setPackage("com.incar.printerservice")
         action = "com.incar.printerservice.IPrinterService"
-      } else {
-        setPackage("net.nyx.printerservice")
-        action = "net.nyx.printerservice.IPrinterService"
       }
+      context.bindService(intent2, connService, Context.BIND_AUTO_CREATE)
     }
-    context.bindService(intent, connService, Context.BIND_AUTO_CREATE)
   }
 
   private fun stopService(context: Context) {
@@ -101,18 +103,19 @@ class NyxPrinterPlugin: FlutterPlugin, MethodCallHandler {
         }
         "printBarcode" -> {
           val ret = printerService?.printBarcode(
-            call.argument("text") ?: "",
-            call.argument("width") ?: 100,
-            call.argument("height") ?: 50,
-            1, 1
+            call.argument<String>("text") ?: "",
+            call.argument<Int>("width") ?: 100,
+            call.argument<Int>("height") ?: 50,
+            1, 1,
+            call.argument<Int>("symbology") ?: 0
           ) ?: -1
           result.success(ret)
         }
         "printQrCode" -> {
           val ret = printerService?.printQrCode(
-            call.argument("text") ?: "",
-            call.argument("width") ?: 100,
-            call.argument("height") ?: 100,
+            call.argument<String>("text") ?: "",
+            call.argument<Int>("width") ?: 100,
+            call.argument<Int>("height") ?: 100,
             1
           ) ?: -1
           result.success(ret)

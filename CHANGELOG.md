@@ -1,3 +1,7 @@
+## 1.1.7
+- Upgrade printer service AIDL interface to the latest version supporting newer T2 Plus devices.
+- Update Kotlin implementation of `printBarcode` to support updated signatures.
+
 ## 1.1.6
 - Update example app with a modern, minimal, dark-themed UI optimized for low-end POS hardware.
 - Add sample POS receipt layout and print action.
