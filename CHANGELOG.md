@@ -1,4 +1,4 @@
-## 1.1.7
+## 1.2.0
 - Upgrade printer service AIDL interface to the latest version supporting newer T2 Plus devices.
 - Update Kotlin implementation of `printBarcode` to support updated signatures.
 
