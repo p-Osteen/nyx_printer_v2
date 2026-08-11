@@ -1,3 +1,6 @@
+## 1.2.2
+- Migrate Android plugin to use built-in Kotlin configuration, resolving pub.dev legacy warning.
+
 ## 1.2.1
 - Update documentation and `pubspec.yaml` to reflect `nyx_printer_v2` name and T2 Plus support.
 - Update example app to properly pass `width` and `height` to `printBarcode`.
